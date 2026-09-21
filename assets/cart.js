@@ -99,12 +99,7 @@
     if (!html) { setBusy(false); return; }
     var next = new DOMParser().parseFromString(html, 'text/html').getElementById('CartItems');
     if (next) {
-      var typed = {};
-      root.querySelectorAll('[data-brief-field]').forEach(function (el) { typed[el.name] = el.value; });
       root.innerHTML = next.innerHTML;
-      root.querySelectorAll('[data-brief-field]').forEach(function (el) {
-        if (typed[el.name]) el.value = typed[el.name];
-      });
       bind(root);
     }
     setBusy(false);

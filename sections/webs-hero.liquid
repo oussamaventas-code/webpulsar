@@ -83,6 +83,81 @@
         {%- endfor -%}
       </div>
     {%- endif -%}
+
+    <!-- HERO MOCKUP STAGE: Ambientes de la web en vivo -->
+    <div class="qw-hero__stage" data-reveal="fade" style="--reveal-delay: 350ms">
+      <div class="qw-hero__mockup-wrap">
+        <!-- Floating badge left -->
+        <div class="qw-hero__floating-badge qw-hero__floating-badge--tl">
+          <span class="pulse-dot"></span>
+          <span>Web en Vivo · 60 FPS</span>
+        </div>
+        <!-- Floating badge right -->
+        <div class="qw-hero__floating-badge qw-hero__floating-badge--tr">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>PageSpeed 99/100</span>
+        </div>
+
+        <!-- MacBook Pro Hero Stage -->
+        <div class="macbook-device macbook-device--hero">
+          <div class="macbook-screen">
+            <div class="macbook-camera"><i></i></div>
+            <div class="macbook-safari-bar">
+              <div class="macbook-traffic-lights">
+                <span class="light close"></span>
+                <span class="light minimize"></span>
+                <span class="light zoom"></span>
+              </div>
+              <div class="macbook-address-bar">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="url-text">webpulsar.es/demo-live</span>
+              </div>
+            </div>
+            <div class="macbook-content macbook-content--hero">
+              <video class="hero-screen-video" autoplay muted loop playsinline poster="/assets/web-browsing-laptop.jpg">
+                <source src="/assets/web-browsing-laptop.mp4" type="video/mp4">
+              </video>
+              <div class="hero-screen-overlay">
+                <span class="hero-screen-tag">● VISTA RESPONSIVE ACTIVA</span>
+              </div>
+            </div>
+          </div>
+          <div class="macbook-bottom">
+            <div class="macbook-notch-lip"></div>
+          </div>
+        </div>
+
+        <!-- iPhone X overlay in Hero -->
+        <div class="iphonex-device iphonex-device--hero">
+          <div class="iphonex-body">
+            <div class="iphonex-screen">
+              <div class="iphonex-topbar">
+                <span class="iphonex-time">9:41</span>
+                <div class="iphonex-notch"><span class="notch-camera"></span><span class="notch-speaker"></span></div>
+              </div>
+              <div class="iphonex-content">
+                <div class="hero-mobile-inner">
+                  <div class="hmi-nav">
+                    <span class="hmi-brand">TuNegocio</span>
+                    <span class="hmi-dot"></span>
+                  </div>
+                  <div class="hmi-hero">
+                    <p class="hmi-label">SERVICIOS LOCALES</p>
+                    <p class="hmi-title">Abierto hoy</p>
+                    <a href="#quiero-mi-web" class="hmi-btn">Reservar WhatsApp</a>
+                  </div>
+                  <div class="hmi-cards">
+                    <div class="hmi-card"><span>Servicio estrella</span><b>Desde 18€</b></div>
+                    <div class="hmi-card"><span>Atención rápida</span><b>5.0 ★★★★★</b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="iphonex-home-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -91,24 +166,24 @@
 <script src="{{ 'qw-beams.js' | asset_url }}" defer="defer"></script>
 <script>
   (function () {
-    function boot() {
+    var attempts = 0;
+    function tryBoot() {
       var container = document.querySelector('[data-qw-beams]');
       if (!container) return;
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduceMotion || !window.THREE || !window.QWBeams) return;
-      // En móvil también se dibuja: three.js ya se descarga de todas formas y
-      // el renderer va a pixelRatio 1, en low-power y se pausa fuera de
-      // pantalla. El lienzo vertical es estrecho: menos haces, más anchos y
-      // con más luz, porque con los valores de escritorio quedan casi negros.
-      var narrow = window.innerWidth < 750;
+      var isNarrow = window.innerWidth < 750;
+      if (reduceMotion || isNarrow) return;
+      if (!window.THREE || !window.QWBeams) {
+        if (++attempts < 50) setTimeout(tryBoot, 80);
+        return;
+      }
       try {
         window.QWBeams.init(container, {
-          beamWidth: narrow ? 4 : 2.5,
+          beamWidth: 2.5,
           beamHeight: 18,
-          beamNumber: narrow ? 5 : 10,
+          beamNumber: 10,
           lightColor: '#A855F7',
-          lightIntensity: narrow ? 3 : 1,
-          speed: narrow ? 2 : 2.5,
+          speed: 2.5,
           noiseIntensity: 2,
           scale: 0.15,
           rotation: 43,
@@ -119,9 +194,9 @@
       }
     }
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', boot);
+      document.addEventListener('DOMContentLoaded', tryBoot);
     } else {
-      boot();
+      tryBoot();
     }
   })();
 </script>

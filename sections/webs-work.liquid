@@ -55,16 +55,17 @@
                   <video
                     class="qw-work-card__video"
                     data-lazy-video
+                    autoplay
                     muted
                     loop
                     playsinline
-                    preload="none"
+                    preload="auto"
                     {% if b.image != blank %}poster="{{ b.image | image_url: width: 800 }}"{% endif %}
                   >
-                    <source data-src="{{ b.video_url }}" type="video/mp4">
+                    <source src="{{ b.video_url }}" data-src="{{ b.video_url }}" type="video/mp4">
                   </video>
                 {%- elsif b.image != blank -%}
-                  {{ b.image | image_url: width: 800 | image_tag: class: 'qw-work-card__img', loading: 'lazy', alt: b.title }}
+                  <img class="qw-work-card__img" src="{{ b.image | image_url }}" alt="{{ b.title | escape }}" loading="lazy">
                 {%- endif -%}
 
                 <div class="qw-work-card__canvas qw-work-card__canvas--{{ b.style_theme | default: 'tech' }}" aria-hidden="true">

@@ -12,8 +12,7 @@
     "oferta_popup": {
       "type": "offer-popup",
       "settings": {
-        "delay_seconds": 15,
-        "min_scroll_percent": 35,
+        "delay_seconds": 5,
         "frequency": "session",
         "badge": "OFERTA DE LANZAMIENTO",
         "heading": "¿Quieres esta oferta?",
@@ -41,8 +40,19 @@
         "cta_url": "",
         "cta2_label": "Ver planes",
         "cta2_url": "",
+        "hero_video": "/assets/hero-web-dev.mp4",
+        "hero_video_poster": "/assets/hero-web-dev.jpg",
         "show_gridlines": true,
         "starter_variant_id": "64575079678321"
+      }
+    },
+    "ambientes": {
+      "type": "webs-environments",
+      "settings": {
+        "eyebrow": "AMBIENTES DE LA WEB",
+        "heading": "Cómo creamos y cómo se vive tu web.",
+        "heading_accent": "Tecnología y conversión.",
+        "body": "Desde las líneas de código y el diseño responsive hasta la experiencia fluida de tus clientes navegando desde el móvil o el ordenador."
       }
     },
     "problema": {
@@ -228,7 +238,8 @@
             "highlight": "60 FPS · Next.js & 3D",
             "desc": "Experiencia inmersiva con animaciones basadas en física, transiciones fluidas y diseño editorial de alta gama para perfiles creativos.",
             "tags": "React, Next.js, Framer Motion, 3D Web, UI/UX",
-            "style_theme": "neon"
+            "style_theme": "neon",
+            "image": "project-portfolio.png"
           }
         },
         "w2": {
@@ -241,8 +252,8 @@
             "highlight": "Gestión en tiempo real",
             "desc": "Software integral en la nube: gestión de reservas por barbero y horario, catálogo interactivo de servicios, control de clientes y panel de métricas.",
             "tags": "Java, SaaS, CRUD, SQL, Panel de Control, API",
-            "image": "shopify://shop_images/proyecto-zencut.jpg",
-            "style_theme": "tech"
+            "style_theme": "tech",
+            "image": "project-barber.png"
           }
         },
         "w3": {
@@ -255,8 +266,8 @@
             "highlight": "Selector dual frío / caliente",
             "desc": "Tienda gastronómica con selector interactivo por temperatura, microinteracciones dinámicas, diseño apetitoso y checkout directo optimizado.",
             "tags": "React, Tailwind, Framer Motion, E-commerce, Mobile-First",
-            "image": "shopify://shop_images/proyecto-bowls.jpg",
-            "style_theme": "warm"
+            "style_theme": "warm",
+            "image": "project-bowlfood.png"
           }
         },
         "w4": {
@@ -269,8 +280,8 @@
             "highlight": "Arquitectura Fullstack",
             "desc": "Aplicación web completa con persistencia en base de datos, autenticación segura, widgets interactivos y despliegue de alto rendimiento.",
             "tags": "Full Stack, Node.js, MongoDB, React, PWA, Cloud",
-            "image": "shopify://shop_images/proyecto-imaan-app.jpg",
-            "style_theme": "dark"
+            "style_theme": "dark",
+            "image": "project-deen.png"
           }
         },
         "w5": {
@@ -283,8 +294,8 @@
             "highlight": "Lookbook inmersivo",
             "desc": "Tienda digital de moda streetwear premium con dirección de arte editorial, navegación fluida, lookbook interactivo y estética depurada.",
             "tags": "Next.js, E-commerce, Branding, Diseño Web, Awwwards Style",
-            "image": "shopify://shop_images/proyecto-imaan-tienda.jpg",
-            "style_theme": "brand"
+            "style_theme": "brand",
+            "image": "project-imaan.png"
           }
         }
       },
@@ -428,6 +439,6 @@
     }
   },
   "order": [
-    "oferta_popup", "hero", "problema", "oferta", "planes", "mantenimiento", "calculadora", "demos", "trabajo", "metricas", "proceso", "servicios", "faq", "cierre", "barra"
+    "oferta_popup", "hero", "ambientes", "problema", "calculadora", "oferta", "planes", "mantenimiento", "demos", "trabajo", "metricas", "proceso", "servicios", "faq", "cierre", "barra"
   ]
 }

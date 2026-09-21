@@ -73,19 +73,7 @@
       "subtotal": "Subtotal",
       "checkout": "Ir al pago",
       "remove_title": "Eliminar",
-      "digital_note": "Servicio digital: sin gastos de envío ni dirección que rellenar.",
-      "brief_title": "Cuéntanos sobre tu negocio",
-      "brief_intro": "Así empezamos tu web sin tener que preguntarte nada después de pagar.",
-      "brief_company": "Nombre de tu empresa",
-      "brief_company_ph": "Ej. Peluquería Marta",
-      "brief_activity": "¿A qué se dedica?",
-      "brief_activity_ph": "Ej. Peluquería y estética en Murcia",
-      "brief_goal": "¿Qué quieres hacer con tu web?",
-      "brief_goal_ph": "Ej. Que mis clientes vean los servicios y reserven por WhatsApp",
-      "brief_email": "Correo electrónico de contacto",
-      "brief_email_ph": "tu@correo.com",
-      "brief_phone": "Teléfono (WhatsApp si puede ser)",
-      "brief_phone_ph": "Ej. 600 123 456"
+      "digital_note": "Servicio digital: sin gastos de envío ni dirección que rellenar."
     },
     "portfolio": {
       "placeholder": "Vídeo pendiente de subir",

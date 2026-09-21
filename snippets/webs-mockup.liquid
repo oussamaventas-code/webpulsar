@@ -3,7 +3,12 @@
   Si se pasa `image`, se sustituye toda la maqueta CSS por la imagen (mockup ya generado).
 {%- endcomment -%}
 
-{%- if image != blank -%}
+{%- assign has_valid_image = false -%}
+{%- if image != blank and image contains 'shopify://' == false -%}
+  {%- assign has_valid_image = true -%}
+{%- endif -%}
+
+{%- if has_valid_image -%}
   <div class="qw-mock qw-mock--photo-only" aria-hidden="true" style="border-radius: 14px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.35);">
     {{
       image
@@ -40,6 +45,8 @@
       assign mk_hours = 'Mar-Sáb · 10:00-20:00'
       assign mk_rating = '4,9'
       assign mk_reviews = '212'
+      assign mk_photo = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80'
+      assign mk_photo_alt = 'Salón de Peluquería'
 
     when 'estetica'
       assign mk_brand = '#a8577f'
@@ -58,6 +65,8 @@
       assign mk_hours = 'Lun-Vie · 09:30-20:30'
       assign mk_rating = '4,8'
       assign mk_reviews = '164'
+      assign mk_photo = 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80'
+      assign mk_photo_alt = 'Estética Facial y Spa'
 
     when 'unas'
       assign mk_brand = '#c2557a'
@@ -76,6 +85,8 @@
       assign mk_hours = 'Lun-Sáb · 10:00-21:00'
       assign mk_rating = '5,0'
       assign mk_reviews = '98'
+      assign mk_photo = 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=800&q=80'
+      assign mk_photo_alt = 'Nail Art y Manicura'
 
     when 'fisio'
       assign mk_brand = '#1f6feb'
@@ -94,6 +105,8 @@
       assign mk_hours = 'Lun-Vie · 08:00-21:00'
       assign mk_rating = '4,9'
       assign mk_reviews = '187'
+      assign mk_photo = 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80'
+      assign mk_photo_alt = 'Clínica de Fisioterapia'
 
     when 'taller'
       assign mk_brand = '#d2622a'
@@ -112,6 +125,8 @@
       assign mk_hours = 'Lun-Vie · 08:30-19:00'
       assign mk_rating = '4,7'
       assign mk_reviews = '341'
+      assign mk_photo = 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80'
+      assign mk_photo_alt = 'Taller Mecánico Especializado'
 
     when 'restaurante'
       assign mk_brand = '#127a5c'
@@ -130,6 +145,8 @@
       assign mk_hours = 'Mar-Dom · 13:00-16:00 y 20:00-23:30'
       assign mk_rating = '4,6'
       assign mk_reviews = '509'
+      assign mk_photo = 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80'
+      assign mk_photo_alt = 'Restaurante y Terraza'
 
     when 'electricista'
       assign mk_brand = '#2f6f9e'
@@ -148,6 +165,8 @@
       assign mk_hours = 'Urgencias 24 h'
       assign mk_rating = '4,8'
       assign mk_reviews = '126'
+      assign mk_photo = 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80'
+      assign mk_photo_alt = 'Electricista Profesional'
 
     else
       assign mk_brand = '#3d5a80'
@@ -166,15 +185,18 @@
       assign mk_hours = 'Lun-Vie · 09:00-19:00'
       assign mk_rating = '4,7'
       assign mk_reviews = '73'
+      assign mk_photo = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
+      assign mk_photo_alt = 'Inmobiliaria Exclusiva'
   endcase
 
   assign nav_items = mk_nav | split: ','
   assign row_items = mk_rows | split: ';;'
   assign is_phone = phone | default: false
+  assign hide_chrome = hide_chrome | default: false
 -%}
 
 <div class="qw-mock{% if is_phone %} qw-mock--phone{% endif %}" style="--mk-brand: {{ mk_brand }};" aria-hidden="true">
-  {%- unless is_phone -%}
+  {%- unless is_phone or hide_chrome -%}
     <div class="qw-mock__chrome">
       <div class="qw-mock__dots"><i></i><i></i><i></i></div>
       <div class="qw-mock__url">
@@ -192,7 +214,10 @@
     <span class="qw-mock__cta">{{ mk_cta }}</span>
   </div>
 
-  <div class="qw-mock__hero">
+  <div class="qw-mock__hero{% if mk_photo %} has-photo{% endif %}">
+    {%- if mk_photo -%}
+      <img class="qw-mock__photo" src="{{ mk_photo }}" alt="{{ mk_photo_alt }}" loading="lazy" />
+    {%- endif -%}
     <div class="qw-mock__hero-copy">
       <p class="qw-mock__eyebrow">{{ mk_eyebrow }}</p>
       <p class="qw-mock__title">{{ mk_title }}</p>

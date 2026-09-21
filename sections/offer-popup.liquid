@@ -5,7 +5,7 @@
   assign s = section.settings
 -%}
 
-<div class="offer-popup" data-offer-popup data-delay="{{ s.delay_seconds | default: 5 }}" data-min-scroll="{{ s.min_scroll_percent | default: 0 }}" data-frequency="{{ s.frequency }}" aria-hidden="true">
+<div class="offer-popup" data-offer-popup data-delay="{{ s.delay_seconds | default: 5 }}" data-frequency="{{ s.frequency }}" aria-hidden="true">
   <div class="offer-popup__overlay" data-offer-popup-dismiss></div>
   <div class="offer-popup__panel" role="dialog" aria-modal="true" aria-label="{{ s.heading }}">
     <button type="button" class="offer-popup__close" data-offer-popup-dismiss aria-label="{{ 'accessibility.close' | t }}">
@@ -86,30 +86,8 @@
         if (event.key === 'Escape') close();
       });
 
-      // Sale cuando han pasado los segundos Y el visitante ha bajado el % de
-      // página indicado (0 = solo por tiempo). Un popup a pantalla completa a
-      // los 5s tapa el hero antes de que se lea nada, y en móvil Google lo
-      // penaliza como interstitial intrusivo en la experiencia de la landing.
       if (!alreadyShown()) {
-        var minScroll = (parseFloat(popup.dataset.minScroll) || 0) / 100;
-        var timeReached = false, scrolled = minScroll <= 0, fired = false;
-        var maybeOpen = function () {
-          if (fired || !timeReached || !scrolled) return;
-          fired = true;
-          open();
-        };
-        if (!scrolled) {
-          var onScroll = function () {
-            var max = document.documentElement.scrollHeight - window.innerHeight;
-            if (max > 0 && window.scrollY / max >= minScroll) {
-              scrolled = true;
-              window.removeEventListener('scroll', onScroll);
-              maybeOpen();
-            }
-          };
-          window.addEventListener('scroll', onScroll, { passive: true });
-        }
-        setTimeout(function () { timeReached = true; maybeOpen(); }, delay);
+        setTimeout(open, delay);
       }
     }
 
@@ -127,7 +105,6 @@
   "tag": "div",
   "settings": [
     { "type": "number", "id": "delay_seconds", "label": "Segundos antes de mostrarse", "default": 5 },
-    { "type": "range", "id": "min_scroll_percent", "label": "% de página que debe bajar antes de mostrarse", "info": "0 = sale solo por tiempo. Con tráfico de anuncios conviene 30-50 para no tapar el hero.", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 0 },
     {
       "type": "select",
       "id": "frequency",

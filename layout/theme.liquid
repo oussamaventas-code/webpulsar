@@ -21,30 +21,20 @@
       <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
     {%- endif -%}
 
-    {%- comment -%}
-      Título: en la home, si en el admin no se ha puesto uno propio (Tienda
-      online > Preferencias) y sale solo el nombre de la tienda, se usa uno que
-      diga qué se vende y el precio de entrada. El resto de páginas no cambia.
+    <title>
+      {{ page_title }}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
 
+    {%- comment -%}
       Descripción: si la página no tiene la suya en el admin, cae en una
       descripción del negocio. No dejar nunca el <head> sin description: es lo
-      primero que lee un rastreador para resumir de qué va el sitio.
+      primero que lee un rastreador de IA para resumir de qué va el sitio.
     {%- endcomment -%}
-    {%- liquid
-      assign seo_title = page_title
-      if request.page_type == 'index' and page_title == shop.name
-        assign seo_title = 'Webs para negocios desde 49 € | ' | append: shop.name
-      endif
-      assign fallback_description = 'Webs profesionales para negocios locales: adaptadas a móvil, entrega media en menos de 7 días y sin permanencia. Empieza desde 49 €, pago único.'
-      assign seo_description = page_description | default: fallback_description
-    -%}
-    <title>
-      {{ seo_title }}
-      {%- unless seo_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
-    </title>
-    <meta name="description" content="{{ seo_description | escape }}">
+    {%- assign fallback_description = 'Create professional ads without a traditional production: no cameras, no studio, no actors, no crew. A person directs the creative and AI produces it, in fixed monthly batches delivered in 72 hours. Ad video production for ecommerce brands and agencies running Meta and TikTok ads.' -%}
+    <meta name="description" content="{{ page_description | default: fallback_description | escape }}">
 
-    {% render 'meta-tags', seo_title: seo_title, seo_description: seo_description %}
+    {% render 'meta-tags' %}
     {% render 'structured-data' %}
 
     {%- comment -%}

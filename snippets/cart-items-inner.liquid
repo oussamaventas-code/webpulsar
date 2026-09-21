@@ -173,68 +173,6 @@
     </div>
   {%- endif -%}
 
-  {%- comment -%}
-    Datos del negocio: se envían como atributos del carrito (aparecen en el pedido,
-    en "Detalles adicionales"). Los inputs viven fuera del <form> del checkout pero
-    se asocian con form="CartCheckoutForm", así que se guardan al pulsar "Ir al pago"
-    y el navegador bloquea el envío si falta alguno. Las claves van fijas en español
-    para que el pedido se lea igual sea cual sea el idioma del visitante.
-  {%- endcomment -%}
-  <section class="cart-brief" aria-labelledby="cart-brief-title">
-    <h2 class="t-h4" id="cart-brief-title">{{ 'sections.cart.brief_title' | t }}</h2>
-    <p class="t-sm t-dim cart-brief__intro">{{ 'sections.cart.brief_intro' | t }}</p>
-
-    <div class="field">
-      <label class="field__label" for="brief-company">{{ 'sections.cart.brief_company' | t }} <span class="field__req" aria-hidden="true">*</span></label>
-      <input
-        type="text" class="input" id="brief-company" name="attributes[Empresa]"
-        form="CartCheckoutForm" data-brief-field required maxlength="120" autocomplete="organization"
-        value="{{ cart.attributes['Empresa'] | escape }}"
-        placeholder="{{ 'sections.cart.brief_company_ph' | t }}"
-      >
-    </div>
-
-    <div class="field">
-      <label class="field__label" for="brief-activity">{{ 'sections.cart.brief_activity' | t }} <span class="field__req" aria-hidden="true">*</span></label>
-      <input
-        type="text" class="input" id="brief-activity" name="attributes[Actividad]"
-        form="CartCheckoutForm" data-brief-field required maxlength="160"
-        value="{{ cart.attributes['Actividad'] | escape }}"
-        placeholder="{{ 'sections.cart.brief_activity_ph' | t }}"
-      >
-    </div>
-
-    <div class="field">
-      <label class="field__label" for="brief-goal">{{ 'sections.cart.brief_goal' | t }} <span class="field__req" aria-hidden="true">*</span></label>
-      <textarea
-        class="textarea" id="brief-goal" name="attributes[Objetivo de la web]"
-        form="CartCheckoutForm" data-brief-field required maxlength="800" rows="3"
-        placeholder="{{ 'sections.cart.brief_goal_ph' | t }}"
-      >{{ cart.attributes['Objetivo de la web'] | escape }}</textarea>
-    </div>
-
-    <div class="field">
-      <label class="field__label" for="brief-email">{{ 'sections.cart.brief_email' | t }} <span class="field__req" aria-hidden="true">*</span></label>
-      <input
-        type="email" class="input" id="brief-email" name="attributes[Email]"
-        form="CartCheckoutForm" data-brief-field required maxlength="120" autocomplete="email"
-        value="{{ cart.attributes['Email'] | escape }}"
-        placeholder="{{ 'sections.cart.brief_email_ph' | t }}"
-      >
-    </div>
-
-    <div class="field">
-      <label class="field__label" for="brief-phone">{{ 'sections.cart.brief_phone' | t }} <span class="field__req" aria-hidden="true">*</span></label>
-      <input
-        type="tel" class="input" id="brief-phone" name="attributes[Teléfono]"
-        form="CartCheckoutForm" data-brief-field required inputmode="tel" autocomplete="tel"
-        pattern="[0-9+\s\(\)\.\-]{9,20}" maxlength="20"
-        value="{{ cart.attributes['Teléfono'] | escape }}"
-        placeholder="{{ 'sections.cart.brief_phone_ph' | t }}"
-      >
-    </div>
-  </section>
-
   <div class="cart-page__foot">
     <div class="cart-page__totals">
       <div class="cart-page__totals-row">
@@ -247,7 +185,7 @@
       </p>
     </div>
 
-    <form action="{{ routes.cart_url }}" method="post" class="cart-page__checkout-form" id="CartCheckoutForm">
+    <form action="{{ routes.cart_url }}" method="post" class="cart-page__checkout-form">
       <button type="submit" name="checkout" class="btn btn--primary btn--lg btn--full">
         {{ 'sections.cart.checkout' | t }}
         {% render 'icon', name: 'arrow-right', size: 16 %}

@@ -60,7 +60,97 @@
         >
           <div class="qw-demos__stage">
             <div class="qw-demos__frame" data-parallax="0.06">
-              {% render 'webs-mockup', kind: b.kind, image: b.image %}
+              <div class="qw-demos__device-bar">
+                <span class="qw-demos__device-label">Vista previa:</span>
+                <button type="button" class="qw-device-btn is-active" data-device="both">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="13" height="11" rx="1.5"/><rect x="15" y="7" width="7" height="13" rx="1.5"/></svg>
+                  Ambos
+                </button>
+                <button type="button" class="qw-device-btn" data-device="desktop">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  Ordenador
+                </button>
+                <button type="button" class="qw-device-btn" data-device="mobile">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                  Móvil
+                </button>
+              </div>
+
+              <div class="qw-demos__display view-both" data-demo-display>
+                <!-- MACBOOK PRO -->
+                <div class="qw-demos__desktop-view">
+                  <div class="macbook-device">
+                    <div class="macbook-screen">
+                      <div class="macbook-camera"><i></i></div>
+                      <div class="macbook-safari-bar">
+                        <div class="macbook-traffic-lights">
+                          <span class="light close"></span>
+                          <span class="light minimize"></span>
+                          <span class="light zoom"></span>
+                        </div>
+                        <div class="macbook-nav-arrows">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                        </div>
+                        <div class="macbook-address-bar">
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                          {%- case b.kind -%}
+                            {%- when 'peluqueria' -%}<span class="url-text">salonaurora.es</span>
+                            {%- when 'taller' -%}<span class="url-text">talleresramos.es</span>
+                            {%- when 'restaurante' -%}<span class="url-text">casamarina.es</span>
+                            {%- when 'fisio' -%}<span class="url-text">fisionexo.es</span>
+                            {%- when 'estetica' -%}<span class="url-text">centrolumiere.es</span>
+                            {%- when 'unas' -%}<span class="url-text">nailsstudio.es</span>
+                            {%- when 'electricista' -%}<span class="url-text">electrovega.es</span>
+                            {%- else -%}<span class="url-text">inmocosta.es</span>
+                          {%- endcase -%}
+                        </div>
+                        <div class="macbook-safari-actions">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                        </div>
+                      </div>
+                      <div class="macbook-content">
+                        {% render 'webs-mockup', kind: b.kind, image: b.image, phone: false, hide_chrome: true %}
+                      </div>
+                    </div>
+                    <div class="macbook-bottom">
+                      <div class="macbook-notch-lip"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- IPHONE X -->
+                <div class="qw-demos__mobile-view">
+                  <div class="iphonex-device">
+                    <div class="iphonex-btn-mute"></div>
+                    <div class="iphonex-btn-volup"></div>
+                    <div class="iphonex-btn-voldown"></div>
+                    <div class="iphonex-btn-power"></div>
+                    
+                    <div class="iphonex-body">
+                      <div class="iphonex-screen">
+                        <div class="iphonex-topbar">
+                          <span class="iphonex-time">9:41</span>
+                          <div class="iphonex-notch">
+                            <span class="notch-camera"></span>
+                            <span class="notch-speaker"></span>
+                          </div>
+                          <div class="iphonex-status-icons">
+                            <svg width="13" height="10" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="0.5"/><rect x="4" y="5" width="3" height="7" rx="0.5"/><rect x="8" y="2.5" width="3" height="9.5" rx="0.5"/><rect x="12" y="0" width="3" height="12" rx="0.5"/></svg>
+                            <svg width="12" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                            <div class="iphonex-battery"><div class="battery-level"></div></div>
+                          </div>
+                        </div>
+                        <div class="iphonex-content">
+                          {% render 'webs-mockup', kind: b.kind, image: b.image, phone: true %}
+                        </div>
+                        <div class="iphonex-home-bar"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="qw-demos__aside">

@@ -1,8 +1,8 @@
 {%- liquid
-  assign og_title = seo_title | default: page_title | default: shop.name
+  assign og_title = page_title | default: shop.name
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
-  assign og_description = seo_description | default: page_description | default: shop.description | default: shop.name
+  assign og_description = page_description | default: shop.description | default: shop.name
 
   if request.page_type == 'product'
     assign og_type = 'product'

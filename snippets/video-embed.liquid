@@ -94,9 +94,10 @@
   {%- if src != blank -%}
     <video
       data-lazy-video
+      autoplay
       {% if eager %}data-eager="true"{% endif %}
       {% if autoplay == false %}data-autoplay="false"{% endif %}
-      preload="none"
+      preload="auto"
       muted
       loop
       playsinline
@@ -106,7 +107,7 @@
       aria-hidden="true"
       {% if poster_image != blank %}poster="{{ poster_image | image_url: width: 640 }}"{% elsif poster_url != blank %}poster="{{ poster_url }}"{% endif %}
     >
-      <source data-src="{{ src }}" type="video/mp4">
+      <source src="{{ src }}" data-src="{{ src }}" type="video/mp4">
     </video>
 
     <div class="vframe__spinner" aria-hidden="true"><span></span></div>

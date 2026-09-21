@@ -73,19 +73,7 @@
       "subtotal": "Subtotal",
       "checkout": "Checkout",
       "remove_title": "Remove",
-      "digital_note": "Digital service: no shipping cost or address to fill in.",
-      "brief_title": "Tell us about your business",
-      "brief_intro": "So we can start your website without chasing you for details after you pay.",
-      "brief_company": "Your business name",
-      "brief_company_ph": "e.g. Marta's Hair Studio",
-      "brief_activity": "What does it do?",
-      "brief_activity_ph": "e.g. Hair and beauty salon in Murcia",
-      "brief_goal": "What do you want to do with your website?",
-      "brief_goal_ph": "e.g. Let customers see the services and book through WhatsApp",
-      "brief_email": "Contact email",
-      "brief_email_ph": "you@email.com",
-      "brief_phone": "Phone (WhatsApp if possible)",
-      "brief_phone_ph": "e.g. +34 600 123 456"
+      "digital_note": "Digital service: no shipping cost or address to fill in."
     },
     "portfolio": {
       "placeholder": "Video coming soon",

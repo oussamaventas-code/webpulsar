@@ -1,0 +1,15 @@
+{
+  "name": "webpulsar-preview",
+  "version": "1.0.0",
+  "description": "Servidor de previsualización local para el tema Shopify WebPulsar",
+  "main": "preview-server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node preview-server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "liquidjs": "^10.19.1",
+    "puppeteer-core": "^25.11.0"
+  }
+}

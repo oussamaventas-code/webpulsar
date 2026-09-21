@@ -2,15 +2,6 @@
    18. CALCULADORA DE CLIENTES PERDIDOS
    ========================================================================== */
 
-/* El halo decorativo sobresale 37,5px por la derecha y esta sección era la
-   única que no lo recortaba (el hero y proyectos sí). iOS deja arrastrar la
-   página en horizontal aunque el body tenga overflow-x: hidden, así que hay
-   que cortarlo aquí. `clip` en vez de `hidden` para no tocar el eje vertical. */
-.qw-calc { overflow-x: clip; }
-@media (max-width: 749px) {
-  .qw-calc .halo { right: 0; } /* respaldo para Safari anterior a la 16 */
-}
-
 .qw-calc__card {
   position: relative;
   max-width: 720px;
@@ -28,12 +19,10 @@
 .qw-calc__inputs { display: grid; gap: var(--s-5); }
 .qw-calc__inputs .field__label strong { color: var(--c-text); font-weight: 700; }
 
-/* La barra se sigue viendo fina: el alto es zona tocable, para poder
-   arrastrarla con el dedo. Con 6px era casi imposible en móvil. */
 .qw-calc__range {
   width: 100%;
-  height: 44px;
-  margin-top: 0;
+  height: 6px;
+  margin-top: var(--s-2);
   accent-color: var(--c-violet);
   cursor: pointer;
 }

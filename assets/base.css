@@ -9,11 +9,6 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + var(--s-5));
-  /* Los revelados entran desplazados 28px en horizontal, así que la anchura
-     de la página oscila al hacer scroll y en iOS se puede arrastrar de lado.
-     `clip` y no `hidden`: hidden crearía un contenedor de scroll y rompería
-     los position: sticky (cabecera, aside del FAQ). */
-  overflow-x: clip;
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 

@@ -352,10 +352,32 @@
     apply();
   }
 
+  function initDeviceSwitcher(root) {
+    (root || document).querySelectorAll('.qw-device-btn').forEach(function (btn) {
+      if (btn.__qwDevice) return;
+      btn.__qwDevice = true;
+      btn.addEventListener('click', function () {
+        var bar = btn.closest('.qw-demos__device-bar');
+        if (!bar) return;
+        bar.querySelectorAll('.qw-device-btn').forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        var device = btn.dataset.device || 'both';
+        var stage = btn.closest('.qw-demos__stage');
+        if (stage) {
+          var display = stage.querySelector('[data-demo-display]');
+          if (display) {
+            display.className = 'qw-demos__display view-' + device;
+          }
+        }
+      });
+    });
+  }
+
   function initAll(root) {
     initPricingView(root);
     initCtas(root);
     initDemos(root);
+    initDeviceSwitcher(root);
     initForm(root);
     initWhatsapp(root);
     initSticky(root);

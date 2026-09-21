@@ -1,0 +1,144 @@
+{{ 'qm-webs.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+<section class="section qw-environments" id="ambientes">
+  <span class="halo halo--tl" style="--halo-color: var(--c-violet); --halo-opacity: 0.2;" aria-hidden="true"></span>
+  <span class="halo halo--br" style="--halo-color: var(--c-cyan); --halo-opacity: 0.18;" aria-hidden="true"></span>
+
+  <div class="wrap">
+    <div class="section-head section-head--center">
+      {%- if s.eyebrow != blank -%}
+        <p class="t-label" data-reveal="fade">{{ s.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="t-h2" data-reveal>
+        {{ s.heading }}
+        {%- if s.heading_accent != blank -%}
+          <span class="t-grad">{{ s.heading_accent }}</span>
+        {%- endif -%}
+      </h2>
+      {%- if s.body != blank -%}
+        <p class="t-lead" data-reveal style="--reveal-delay: 80ms">{{ s.body }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="qw-env-grid" data-reveal="fade" style="--reveal-delay: 150ms">
+      <!-- Card 1: Experiencia de Usuario & Responsive -->
+      <article class="qw-env-card card--glow">
+        <div class="qw-env-card__media">
+          <video
+            class="qw-env-card__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="/assets/web-browsing-laptop.jpg"
+          >
+            <source src="/assets/web-browsing-laptop.mp4" type="video/mp4">
+          </video>
+          <div class="qw-env-card__badge-row">
+            <span class="chip chip--cyan">
+              <span class="chip__dot chip__dot--pulse"></span>
+              EXPERIENCIA DE USUARIO
+            </span>
+          </div>
+        </div>
+        <div class="qw-env-card__content">
+          <h3 class="qw-env-card__title">Navegación Intuitiva en Todos los Dispositivos</h3>
+          <p class="qw-env-card__text">
+            Tus clientes navegan de forma rápida y cómoda tanto desde su móvil como en el ordenador. Servicios claros, precios a la vista y llamada directa a un toque.
+          </p>
+          <div class="qw-env-card__tags">
+            <span class="qw-tag">Desktop & Móvil</span>
+            <span class="qw-tag">Carga &lt;1 segundo</span>
+            <span class="qw-tag">Conversión Directa</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: Desarrollo & Código Limpio -->
+      <article class="qw-env-card card--glow">
+        <div class="qw-env-card__media">
+          <video
+            class="qw-env-card__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="/assets/hero-web-dev.jpg"
+          >
+            <source src="/assets/hero-web-dev.mp4" type="video/mp4">
+          </video>
+          <div class="qw-env-card__badge-row">
+            <span class="chip chip--violet">
+              <span class="chip__dot chip__dot--pulse"></span>
+              CÓDIGO & RENDIMIENTO
+            </span>
+          </div>
+        </div>
+        <div class="qw-env-card__content">
+          <h3 class="qw-env-card__title">Desarrollo Limpio y Preparado para Crecer</h3>
+          <p class="qw-env-card__text">
+            Sin constructores pesados ni código innecesario. Creamos webs con arquitectura limpia y semántica para que Google las posicione de forma natural.
+          </p>
+          <div class="qw-env-card__tags">
+            <span class="qw-tag">HTML5 / CSS3 Moderno</span>
+            <span class="qw-tag">SEO On-Page</span>
+            <span class="qw-tag">Certificado SSL</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: Estudio Digital & Equipo -->
+      <article class="qw-env-card card--glow">
+        <div class="qw-env-card__media">
+          <video
+            class="qw-env-card__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="/assets/web-code-workspace.jpg"
+          >
+            <source src="/assets/web-code-workspace.mp4" type="video/mp4">
+          </video>
+          <div class="qw-env-card__badge-row">
+            <span class="chip chip--violet">
+              <span class="chip__dot chip__dot--pulse"></span>
+              ESTUDIO DIGITAL
+            </span>
+          </div>
+        </div>
+        <div class="qw-env-card__content">
+          <h3 class="qw-env-card__title">Equipo Experto y Soporte Continuo</h3>
+          <p class="qw-env-card__text">
+            Un equipo dedicado que revisa cada detalle antes de publicar: imágenes, tipografías, botones de contacto y ficha de Google Business.
+          </p>
+          <div class="qw-env-card__tags">
+            <span class="qw-tag">Soporte en Español</span>
+            <span class="qw-tag">Entrega en &lt;7 Días</span>
+            <span class="qw-tag">0€ Permanencia</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Webs · Ambientes de la web",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "AMBIENTES DE LA WEB" },
+    { "type": "text", "id": "heading", "label": "Titular", "default": "Cómo creamos y cómo se vive tu web." },
+    { "type": "text", "id": "heading_accent", "label": "Acento del titular", "default": "" },
+    { "type": "textarea", "id": "body", "label": "Subtítulo", "default": "Desde el primer boceto de diseño y líneas de código hasta la experiencia final de tus clientes navegando desde su móvil." }
+  ]
+}
+{% endschema %}

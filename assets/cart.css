@@ -55,10 +55,6 @@
   border: 0;
   -moz-appearance: textfield;
 }
-/* Safari en iOS hace zoom al enfocar un campo de menos de 16px y no vuelve atrás. */
-@media (max-width: 768px) {
-  .qty-stepper__input { font-size: 16px; }
-}
 .qty-stepper__input::-webkit-outer-spin-button, .qty-stepper__input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
 .cart-line__price { text-align: right; font-size: var(--t-body); font-weight: 600; font-variant-numeric: tabular-nums; }
@@ -152,10 +148,6 @@
 }
 .cart-care-modal__close:hover { background: rgba(255, 255, 255, 0.08); color: var(--c-text); }
 .cart-care-modal__actions { margin-top: var(--s-5); display: grid; gap: var(--s-3); justify-items: stretch; }
-
-.cart-brief { margin-top: var(--s-8); padding: var(--s-6); border: 1px solid var(--c-line-strong); border-radius: var(--r-lg); background: var(--c-elev-1); }
-.cart-brief__intro { margin-top: var(--s-2); margin-bottom: var(--s-5); }
-.cart-brief .textarea { min-height: 96px; }
 
 .cart-page__foot { margin-top: var(--s-8); padding-top: var(--s-6); border-top: 1px solid var(--c-line-strong); }
 .cart-page__totals-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: var(--s-2); }
