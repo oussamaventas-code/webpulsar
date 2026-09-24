@@ -11,10 +11,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,400;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
 {{ 'solar-landing.css' | asset_url | stylesheet_tag }}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="{{ 'vendor-react.js' | asset_url }}"></script>
+<script src="{{ 'vendor-react-dom.js' | asset_url }}"></script>
+<script src="{{ 'vendor-gsap.js' | asset_url }}"></script>
+<script src="{{ 'vendor-scrolltrigger.js' | asset_url }}"></script>
 </head>
 <body>
 <div id="root"></div>
