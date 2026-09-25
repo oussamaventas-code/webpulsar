@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "brand_accent": "#6C3BFF",
+    "brand_accent": "#F26B2E",
     "market_shortcuts": "es|ES|€|Español\nen|US|$|English",
     "content_for_index": [],
     "blocks": {
@@ -30,7 +30,7 @@
   },
   "presets": {
     "Default": {
-      "brand_accent": "#6C3BFF",
+      "brand_accent": "#F26B2E",
       "market_shortcuts": "es|ES|€|Español\nen|US|$|English"
     }
   }
