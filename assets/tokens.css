@@ -1,56 +1,57 @@
 /* ==========================================================================
    TOKENS — capa 0 del sistema de diseño
    Todo lo demás consume estas variables. No usar valores literales fuera.
-   Paleta y tipografía calcadas de somsyngular.com (SOM SYNGULAR).
+   Paleta y tipografía: Solar Studio (cream / solar / ink), coherente con la
+   home nueva (webpulsar-solar-landing).
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,400;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=Source+Code+Pro:wght@400;500;600&display=swap');
 
 :root {
   /* ---------- Color: fondos ---------- */
-  --c-void:        #0B0B12;   /* fondo base */
-  --c-bg:          #0B0B12;
-  --c-elev-1:      #11111B;   /* superficie elevada sutil */
-  --c-elev-2:      #17172a;   /* cards */
-  --c-elev-3:      #1c1c3080; /* hover / glass */
+  --c-void:        #FAFAF7;   /* fondo base (cream) */
+  --c-bg:          #FAFAF7;
+  --c-elev-1:      #FFFFFF;   /* superficie elevada sutil */
+  --c-elev-2:      #FCFAF6;   /* cards */
+  --c-elev-3:      rgba(45, 45, 45, 0.05); /* hover / glass */
 
   /* ---------- Color: texto ---------- */
-  --c-text:        #F5F5FF;
-  --c-text-soft:   #A1A1B3;
-  --c-text-dim:    #7d7d92;
-  --c-text-faint:  #4a4a5c;
+  --c-text:        #2D2D2D;
+  --c-text-soft:   rgba(45, 45, 45, 0.68);
+  --c-text-dim:    rgba(45, 45, 45, 0.5);
+  --c-text-faint:  rgba(45, 45, 45, 0.32);
 
   /* ---------- Color: acentos (uso quirúrgico) ---------- */
-  --c-violet:      #6C3BFF;
-  --c-green:       #00ff94;
-  --c-cyan:        #A855F7;
-  --c-violet-soft: #6C3BFF26;
-  --c-green-soft:  #00ff9420;
-  --c-cyan-soft:   #A855F720;
+  --c-violet:      #F26B2E;   /* acento de marca (solar) */
+  --c-green:       #2E9E5B;
+  --c-cyan:        #C97A3D;   /* acento secundario cálido */
+  --c-violet-soft: #F26B2E22;
+  --c-green-soft:  #2E9E5B1F;
+  --c-cyan-soft:   #C97A3D1F;
 
   /* ---------- Bordes y líneas ---------- */
-  --c-line:        rgba(255, 255, 255, 0.07);
-  --c-line-strong: rgba(255, 255, 255, 0.14);
-  --c-line-accent: rgba(108, 59, 255, 0.35);
+  --c-line:        rgba(45, 45, 45, 0.1);
+  --c-line-strong: rgba(45, 45, 45, 0.18);
+  --c-line-accent: rgba(242, 107, 46, 0.4);
 
   /* ---------- Gradientes ---------- */
   --g-accent:      linear-gradient(135deg, var(--c-violet) 0%, var(--c-cyan) 100%);
   --g-accent-tri:  linear-gradient(115deg, var(--c-violet) 0%, var(--c-cyan) 55%, var(--c-green) 100%);
-  --g-text:        linear-gradient(100deg, #c084fc 0%, #f0abfc 45%, #9333ea 100%);
+  --g-text:        linear-gradient(100deg, #F26B2E 0%, #C97A3D 45%, #F26B2E 100%);
   --g-fade-top:    linear-gradient(to bottom, var(--c-void) 0%, transparent 100%);
   --g-fade-bottom: linear-gradient(to top, var(--c-void) 0%, transparent 100%);
 
   /* ---------- Glows ---------- */
-  --glow-violet:   0 0 0 1px var(--c-line-accent), 0 8px 40px -8px rgba(108, 59, 255, 0.45);
-  --glow-green:    0 0 0 1px rgba(0, 255, 148, 0.3), 0 8px 40px -8px rgba(0, 255, 148, 0.28);
-  --glow-cyan:     0 0 0 1px rgba(168, 85, 247, 0.3), 0 8px 40px -8px rgba(168, 85, 247, 0.3);
-  --shadow-card:   0 1px 0 0 rgba(255,255,255,0.04) inset, 0 24px 60px -24px rgba(0,0,0,0.9);
-  --shadow-lift:   0 40px 80px -32px rgba(0, 0, 0, 0.95);
+  --glow-violet:   0 0 0 1px var(--c-line-accent), 0 8px 40px -8px rgba(242, 107, 46, 0.35);
+  --glow-green:    0 0 0 1px rgba(46, 158, 91, 0.3), 0 8px 40px -8px rgba(46, 158, 91, 0.25);
+  --glow-cyan:     0 0 0 1px rgba(201, 122, 61, 0.3), 0 8px 40px -8px rgba(201, 122, 61, 0.25);
+  --shadow-card:   0 1px 0 0 rgba(255,255,255,0.6) inset, 0 24px 60px -24px rgba(45,45,45,0.22);
+  --shadow-lift:   0 40px 80px -32px rgba(45, 45, 45, 0.28);
 
   /* ---------- Familias ---------- */
-  --f-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --f-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --f-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --f-display: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --f-body:    'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --f-mono:    'Source Code Pro', ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* ---------- Escala tipográfica fluida (min 360px → max 1440px) ---------- */
   --t-mega:   clamp(3.25rem, 1.6rem + 7.3vw, 7.5rem);
@@ -94,7 +95,7 @@
   --gutter:     clamp(1rem, 0.6rem + 1.6vw, 2rem);
 
   /* ---------- Radios ---------- */
-  --r-xs: 6px;  --r-sm: 10px;  --r-md: 16px;  --r-lg: 24px;  --r-xl: 32px;  --r-pill: 999px;
+  --r-xs: 10px;  --r-sm: 14px;  --r-md: 20px;  --r-lg: 28px;  --r-xl: 36px;  --r-pill: 999px;
 
   /* ---------- Movimiento ---------- */
   --e-out:    cubic-bezier(0.16, 1, 0.3, 1);       /* expo-out: el ease del tema */

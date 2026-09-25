@@ -94,6 +94,16 @@
       });
   }
 
+  function captureCareModalState(scope) {
+    var modal = scope.querySelector('[data-cart-care-modal]');
+    if (!modal) return null;
+    var plansStep = modal.querySelector('[data-cart-care-step="plans"]');
+    return {
+      open: modal.getAttribute('aria-hidden') === 'false',
+      step: plansStep && !plansStep.hidden ? 'plans' : 'ask'
+    };
+  }
+
   function replaceSection(data) {
     var html = data.sections && data.sections[SECTION_ID];
     if (!html) { setBusy(false); return; }
@@ -101,11 +111,13 @@
     if (next) {
       var typed = {};
       root.querySelectorAll('[data-brief-field]').forEach(function (el) { typed[el.name] = el.value; });
+      var modalState = captureCareModalState(root);
       root.innerHTML = next.innerHTML;
       root.querySelectorAll('[data-brief-field]').forEach(function (el) {
         if (typed[el.name]) el.value = typed[el.name];
       });
-      bind(root);
+      bind(root, modalState);
+      if (window.ThemeMotion) window.ThemeMotion.init(root);
     }
     setBusy(false);
   }
@@ -117,7 +129,7 @@
     });
   }
 
-  function bindCareModal(scope) {
+  function bindCareModal(scope, priorState) {
     var modal = scope.querySelector('[data-cart-care-modal]');
     if (!modal) return;
 
@@ -142,12 +154,24 @@
       if (plansStep) plansStep.hidden = false;
     });
 
+    if (priorState) {
+      // El carrito se acaba de re-renderizar (p. ej. al cambiar la cantidad de
+      // otra línea): se mantiene el popup tal cual estaba en vez de reabrirlo
+      // o resetear el paso en el que iba el visitante.
+      if (priorState.step === 'plans' && askStep && plansStep) {
+        askStep.hidden = true;
+        plansStep.hidden = false;
+      }
+      if (priorState.open) open();
+      return;
+    }
+
     var alreadyDismissed = false;
     try { alreadyDismissed = sessionStorage.getItem(CARE_DISMISSED_KEY) === '1'; } catch (e) {}
     if (!alreadyDismissed) open();
   }
 
-  function bind(scope) {
+  function bind(scope, modalState) {
     scope.querySelectorAll('[data-qty-decrease]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var input = btn.parentElement.querySelector('[data-qty-input]');
@@ -178,7 +202,7 @@
       });
     });
 
-    bindCareModal(scope);
+    bindCareModal(scope, modalState);
   }
 
   bind(root);
