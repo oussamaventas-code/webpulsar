@@ -1,2 +1,5 @@
-
 preview.html
+*.zip
+archive/
+.DS_Store
+Thumbs.db

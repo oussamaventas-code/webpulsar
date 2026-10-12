@@ -1,20 +1,14 @@
 {%- comment -%}
   Datos estructurados (JSON-LD) de WebPulsar.
-
-  Los rastreadores (Google, y los de las plataformas de anuncios que revisan la
-  landing) no ven las maquetas ni las animaciones: entienden el texto y este
-  esquema. Tiene que describir lo que se vende de verdad.
-
-  Los precios salen de los productos de Shopify, nunca escritos a mano, para
-  que no puedan desincronizarse. Si un producto se borra o cambia de handle,
-  su oferta simplemente deja de salir en vez de romper el JSON.
+  Grafo unificado Schema.org con ProfessionalService, WebSite, Service, Ofertas y FAQPage
+  para maximizar Rich Snippets en Google y visibilidad en motores de IA (RAG / GEO).
 {%- endcomment -%}
 
 {%- liquid
   assign starter = all_products['web-starter-pagina-profesional']
   assign pro = all_products['web-pro-presencia-online-completa']
   assign business = all_products['web-business-herramienta-de-ventas']
-  assign currency = cart.currency.iso_code | default: shop.currency
+  assign currency = cart.currency.iso_code | default: shop.currency | default: 'EUR'
 
   assign starter_desc = 'Una página profesional con diseño responsive, información del negocio, servicios, fotos, botón de WhatsApp, ubicación y formulario de contacto.'
   assign pro_desc = 'Hasta 5 páginas con diseño personalizado, SEO básico, formularios, Google Maps, redes sociales y galería profesional.'
@@ -26,14 +20,49 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["ProfessionalService", "Organization"],
       "@id": "{{ shop.url }}/#organization",
-      "name": {{ shop.name | json }},
-      "legalName": "Stilness LLC",
+      "name": "WebPulsar",
+      "alternateName": "Webpulsar.es",
       "url": "{{ shop.url }}",
-      "description": "Diseño de páginas web profesionales para negocios locales: peluquerías, estética, talleres, restaurantes, fisioterapia y más. Webs adaptadas a móvil, entrega media en menos de 7 días y sin permanencia.",
-      "email": "hello@quickmotionai.com",
-      "areaServed": { "@type": "Country", "name": "España" }
+      "description": "Diseño de páginas web profesionales y automatizaciones para negocios locales: peluquerías, centros de estética, talleres, restaurantes, fisioterapia y clínicas. Webs adaptadas 100% a móvil, entrega media en menos de 7 días y sin permanencia.",
+      "email": "contacto@webpulsar.es",
+      "telephone": ["+34632334756", "+34641279131"],
+      "priceRange": "€",
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Molina de Segura"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Región de Murcia"
+        },
+        {
+          "@type": "Country",
+          "name": "España"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Molina de Segura",
+        "addressRegion": "Murcia",
+        "addressCountry": "ES"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+34632334756",
+          "contactType": "customer service",
+          "availableLanguage": ["Spanish"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+34641279131",
+          "contactType": "sales",
+          "availableLanguage": ["Spanish"]
+        }
+      ]
       {%- if settings.logo != blank -%},
       "logo": "https:{{ settings.logo | image_url: width: 512 }}"
       {%- endif -%}
@@ -42,64 +71,113 @@
       "@type": "WebSite",
       "@id": "{{ shop.url }}/#website",
       "url": "{{ shop.url }}",
-      "name": {{ shop.name | json }},
+      "name": "WebPulsar",
       "publisher": { "@id": "{{ shop.url }}/#organization" },
-      "inLanguage": "es"
+      "inLanguage": "es-ES"
     },
     {
       "@type": "Service",
       "@id": "{{ shop.url }}/#service",
       "name": "Diseño de páginas web para negocios locales",
-      "serviceType": "Diseño web",
+      "serviceType": "Diseño web y Automatizaciones",
       "provider": { "@id": "{{ shop.url }}/#organization" },
       "areaServed": { "@type": "Country", "name": "España" },
       "audience": {
         "@type": "BusinessAudience",
-        "name": "Negocios locales que quieren presencia online: peluquerías, centros de estética, talleres, restaurantes, fisioterapia, clínicas e inmobiliarias"
+        "name": "Negocios locales y pymes que necesitan presencia online: peluquerías, estética, talleres, restaurantes, fisioterapia, clínicas e inmobiliarias"
       },
-      "description": "Creamos la web de tu negocio en pago único y sin permanencia, desde 49 €. Nos cuentas cómo es tu negocio, diseñamos y montamos la página, y te la entregamos lista para que tus clientes te encuentren y te escriban. Mantenimiento mensual opcional. Dominio y hosting no incluidos.",
+      "description": "Creamos la web de tu negocio en pago único y sin permanencia, desde 49 €. Nos cuentas cómo es tu negocio, diseñamos y montamos la página, y te la entregamos lista para que tus clientes te encuentren y te escriban directamente por WhatsApp. Mantenimiento mensual opcional.",
       "termsOfService": "{{ shop.url }}/pages/terminos",
       "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "{{ currency }}",
-        {%- if starter != blank %}"lowPrice": "{{ starter.price | divided_by: 100.0 }}",{% endif %}
-        {%- if business != blank %}"highPrice": "{{ business.price | divided_by: 100.0 }}",{% endif %}
+        "lowPrice": "{% if starter != blank %}{{ starter.price | divided_by: 100.0 }}{% else %}49.00{% endif %}",
+        "highPrice": "{% if business != blank %}{{ business.price | divided_by: 100.0 }}{% else %}499.00{% endif %}",
+        "offerCount": 3,
         "offers": [
-          {%- if starter != blank -%}
           {
             "@type": "Offer",
-            "name": {{ starter.title | json }},
+            "name": {% if starter != blank %}{{ starter.title | json }}{% else %}"Plan STARTER — Web 1 Página"{% endif %},
             "description": {{ starter_desc | json }},
-            "price": "{{ starter.price | divided_by: 100.0 }}",
+            "price": "{% if starter != blank %}{{ starter.price | divided_by: 100.0 }}{% else %}49.00{% endif %}",
             "priceCurrency": "{{ currency }}",
-            "url": "{{ shop.url }}{{ starter.url }}",
+            "url": "{% if starter != blank %}{{ shop.url }}{{ starter.url }}{% else %}{{ shop.url }}#planes{% endif %}",
             "availability": "https://schema.org/InStock"
-          }{%- if pro != blank or business != blank -%},{%- endif -%}
-          {%- endif -%}
-          {%- if pro != blank -%}
+          },
           {
             "@type": "Offer",
-            "name": {{ pro.title | json }},
+            "name": {% if pro != blank %}{{ pro.title | json }}{% else %}"Plan PRO — Hasta 5 Páginas"{% endif %},
             "description": {{ pro_desc | json }},
-            "price": "{{ pro.price | divided_by: 100.0 }}",
+            "price": "{% if pro != blank %}{{ pro.price | divided_by: 100.0 }}{% else %}199.00{% endif %}",
             "priceCurrency": "{{ currency }}",
-            "url": "{{ shop.url }}{{ pro.url }}",
+            "url": "{% if pro != blank %}{{ shop.url }}{{ pro.url }}{% else %}{{ shop.url }}#planes{% endif %}",
             "availability": "https://schema.org/InStock"
-          }{%- if business != blank -%},{%- endif -%}
-          {%- endif -%}
-          {%- if business != blank -%}
+          },
           {
             "@type": "Offer",
-            "name": {{ business.title | json }},
+            "name": {% if business != blank %}{{ business.title | json }}{% else %}"Plan BUSINESS — Web Completa y Automatizaciones"{% endif %},
             "description": {{ business_desc | json }},
-            "price": "{{ business.price | divided_by: 100.0 }}",
+            "price": "{% if business != blank %}{{ business.price | divided_by: 100.0 }}{% else %}499.00{% endif %}",
             "priceCurrency": "{{ currency }}",
-            "url": "{{ shop.url }}{{ business.url }}",
+            "url": "{% if business != blank %}{{ shop.url }}{{ business.url }}{% else %}{{ shop.url }}#planes{% endif %}",
             "availability": "https://schema.org/InStock"
           }
-          {%- endif -%}
         ]
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "{{ shop.url }}/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué incluye la web de 49 €?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una página profesional con la información de tu negocio, tus servicios, fotos, ubicación, formulario de contacto y botón directo de WhatsApp. 100% adaptada a móvil y lista para publicar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El dominio y el hosting están incluidos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El dominio y hosting no están incluidos en el pago único de 49 € para que el dominio quede 100% a tu nombre. Te asesoramos con la opción más económica y recomendada antes de empezar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tardáis en entregar la web?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La web del plan Starter suele entregarse en menos de 7 días una vez recibida la información básica de tu negocio y fotos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo pedir cambios sobre el diseño?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, cada plan incluye 1 ronda de revisiones sobre la primera versión para dejarla exactamente a tu gusto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿La web funciona perfectamente en móviles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, todas nuestras webs se desarrollan bajo enfoque mobile-first garantizando carga ultra-rápida y navegación fluida en smartphones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo contratar mantenimiento mensual?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, el mantenimiento es 100% opcional desde 19,90 €/mes para cubrir actualizaciones, cambios de texto o fotos y soporte técnico continuo sin permanencia."
+          }
+        }
+      ]
     }
   ]
 }

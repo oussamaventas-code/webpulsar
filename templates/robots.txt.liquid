@@ -1,0 +1,28 @@
+{%- comment -%}
+  robots.txt.liquid — Control de rastreo e indexación para Webpulsar.es
+  Optimizado para Googlebot, Bingbot y agentes de Inteligencia Artificial (RAG & GEO).
+{%- endcomment -%}
+{% for group in robots.txt.default_groups %}
+  {{- group.user_agent -}}
+
+  {% for rule in group.rules %}
+    {{- rule -}}
+  {% endfor %}
+
+  {%- if group.sitemap != blank -%}
+    {{ group.sitemap }}
+  {%- endif -%}
+{% endfor %}
+
+# Agentes de Búsqueda con Inteligencia Artificial (Permitir rastreo para citas y respuestas de IA)
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Sitemap principal de Webpulsar
+Sitemap: {{ shop.url }}/sitemap.xml

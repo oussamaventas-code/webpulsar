@@ -2,22 +2,303 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Webs para negocios desde 49 € | WebPulsar</title>
-<meta name="description" content="Creamos webs profesionales para negocios locales desde 49 €. Diseño adaptado a móvil, entrega rápida y contacto directo por WhatsApp.">
-<meta name="theme-color" content="#FAFAF7">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,400;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
-{{ 'solar-landing.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'vendor-react.js' | asset_url }}"></script>
-<script src="{{ 'vendor-react-dom.js' | asset_url }}"></script>
-<script src="{{ 'vendor-gsap.js' | asset_url }}"></script>
-<script src="{{ 'vendor-scrolltrigger.js' | asset_url }}"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Webs para negocios locales desde 49 € | WebPulsar</title>
+  <meta name="description" content="Diseño web profesional para negocios locales desde 49 €. Webs adaptadas 100% a móvil, entrega media en menos de 7 días, sin cuotas ni permanencia. Contacto directo por WhatsApp.">
+  <link rel="canonical" href="{{ canonical_url | default: shop.url }}">
+  <meta name="theme-color" content="#FAFAF7">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  {%- comment -%} Favicon & Apple Touch Icon {%- endcomment -%}
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 48, height: 48 }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
+  {%- else -%}
+    <link rel="icon" type="image/png" href="{{ 'apple-touch-icon.png' | asset_url }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
+  {%- endif -%}
+
+  {%- comment -%} Open Graph (WhatsApp, LinkedIn, Twitter, Facebook) {%- endcomment -%}
+  <meta property="og:site_name" content="WebPulsar">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ canonical_url | default: shop.url }}">
+  <meta property="og:title" content="Webs para negocios locales desde 49 € | WebPulsar">
+  <meta property="og:description" content="Creamos la web de tu negocio en pago único y sin permanencia, desde 49 €. Diseño mobile-first, entrega en menos de 7 días y WhatsApp integrado.">
+  <meta property="og:locale" content="es_ES">
+  {%- if settings.logo != blank -%}
+    <meta property="og:image" content="https:{{ settings.logo | image_url: width: 1200, height: 630 }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+  {%- endif -%}
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Webs para negocios locales desde 49 € | WebPulsar">
+  <meta name="twitter:description" content="Diseño de páginas web profesionales para negocios locales desde 49 €. Adaptadas a móvil, entrega rápida y sin permanencia.">
+  {%- if settings.logo != blank -%}
+    <meta name="twitter:image" content="https:{{ settings.logo | image_url: width: 1200, height: 630 }}">
+  {%- endif -%}
+
+  {%- comment -%} Datos estructurados JSON-LD Schema.org {%- endcomment -%}
+  {% render 'structured-data' %}
+
+  {%- comment -%} Tipografías y estilos principales {%- endcomment -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,400;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+  {{ 'solar-landing.css' | asset_url | stylesheet_tag }}
+
+  {%- comment -%} Scripts del motor de experiencia e interactividad {%- endcomment -%}
+  <script src="{{ 'vendor-react.js' | asset_url }}" defer></script>
+  <script src="{{ 'vendor-react-dom.js' | asset_url }}" defer></script>
+  <script src="{{ 'vendor-gsap.js' | asset_url }}" defer></script>
+  <script src="{{ 'vendor-scrolltrigger.js' | asset_url }}" defer></script>
+  <script src="{{ 'solar-landing.js' | asset_url }}" defer></script>
 </head>
 <body>
-<div id="root"></div>
-<script src="{{ 'solar-landing.js' | asset_url }}"></script>
+  {%- comment -%}
+    El contenedor #root contiene marcado semántico SSR pre-renderizado.
+    Googlebot, Bingbot y rastreadores de IA leen el contenido completo de inmediato.
+    Al cargar el bundle JavaScript en el cliente, React toma el control interactivo.
+  {%- endcomment -%}
+  <div id="root">
+    <header style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(11,11,18,0.06); background: #FAFAF7;">
+      <a href="/" style="font-size: 1.25rem; font-weight: 800; text-decoration: none; color: #0B0B12; font-family: 'Manrope', sans-serif;">
+        WEB<span style="color: #F26B2E;">PULSAR</span>
+      </a>
+      <nav aria-label="Navegación principal" style="display: flex; gap: 1.5rem; align-items: center; font-size: 0.875rem;">
+        <a href="#servicios" style="color: #0B0B12; text-decoration: none;">Servicios</a>
+        <a href="#planes" style="color: #0B0B12; text-decoration: none;">Planes</a>
+        <a href="#proceso" style="color: #0B0B12; text-decoration: none;">Proceso</a>
+        <a href="#proyectos" style="color: #0B0B12; text-decoration: none;">Proyectos</a>
+        <a href="#faq" style="color: #0B0B12; text-decoration: none;">FAQ</a>
+        <a href="https://wa.me/34632334756?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20una%20web" style="background: #0B0B12; color: #FAFAF7; padding: 0.5rem 1rem; border-radius: 9999px; text-decoration: none; font-weight: 600;">Escríbenos</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Principal con H1 único semántico -->
+      <section id="top" style="padding: 4rem 1.5rem; text-align: center; max-width: 54rem; margin: 0 auto;">
+        <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; color: #F26B2E; text-transform: uppercase;">Webs para negocios locales · Desde 49 € pago único</p>
+        <h1 style="font-size: 2.75rem; font-weight: 800; line-height: 1.15; color: #0B0B12; margin: 1rem 0;">
+          Tu negocio merece una web profesional. Créala desde 49 €.
+        </h1>
+        <p style="font-size: 1.125rem; color: rgba(11,11,18,0.7); max-width: 42rem; margin: 0 auto 2rem;">
+          Te ayudamos a tener una presencia online profesional, adaptada a móvil y preparada para que tus clientes te encuentren en Google y te escriban directamente a WhatsApp.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="https://wa.me/34632334756?text=Hola,%20quiero%20mi%20web%20por%2049%E2%82%AC" style="background: #F26B2E; color: #FAFAF7; padding: 0.875rem 1.75rem; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 1rem;">
+            Quiero mi web por 49 €
+          </a>
+          <a href="#planes" style="background: rgba(11,11,18,0.06); color: #0B0B12; padding: 0.875rem 1.75rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 1rem;">
+            Ver todos los planes
+          </a>
+        </div>
+        <div style="margin-top: 3rem; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; font-size: 0.875rem; color: rgba(11,11,18,0.7);">
+          <div><strong>100%</strong> Adaptada a móvil</div>
+          <div><strong>&lt; 7 días</strong> Entrega media</div>
+          <div><strong>&lt; 24h</strong> Tiempo de respuesta</div>
+        </div>
+      </section>
+
+      <!-- Problema y Solución Local -->
+      <section style="padding: 3rem 1.5rem; max-width: 56rem; margin: 0 auto;">
+        <h2 style="font-size: 1.875rem; font-weight: 700; color: #0B0B12; text-align: center;">Tu cliente ya está buscando tu negocio online</h2>
+        <p style="text-align: center; color: rgba(11,11,18,0.7); max-width: 38rem; margin: 0.75rem auto 2rem;">
+          Hoy en día, cuando alguien necesita una peluquería, un taller, un restaurante o un fisioterapeuta cerca, busca en Google. Si no tienes web profesional, se van a la competencia.
+        </p>
+      </section>
+
+      <!-- Planes y Precios -->
+      <section id="planes" style="padding: 3.5rem 1.5rem; max-width: 68rem; margin: 0 auto;">
+        <h2 style="font-size: 2rem; font-weight: 800; text-align: center; color: #0B0B12;">Elige el plan ideal para tu negocio</h2>
+        <p style="text-align: center; color: rgba(11,11,18,0.7); margin-bottom: 2.5rem;">Precios claros en pago único, sin permanencia obligatoria ni costes ocultos.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+          <article style="border: 1px solid rgba(11,11,18,0.1); border-radius: 1rem; padding: 2rem; background: #FFFFFF;">
+            <p style="font-size: 0.875rem; font-weight: 700; color: #F26B2E;">STARTER</p>
+            <h3 style="font-size: 2rem; font-weight: 800; margin: 0.5rem 0;">49 € <span style="font-size: 0.875rem; font-weight: normal; color: rgba(11,11,18,0.6);">pago único</span></h3>
+            <p style="color: rgba(11,11,18,0.7); font-size: 0.875rem;">Para negocios que necesitan estar en internet y recibir clientes de inmediato.</p>
+            <ul style="margin: 1.5rem 0; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.7; color: rgba(11,11,18,0.8);">
+              <li>1 página web profesional</li>
+              <li>Diseño 100% adaptado a móvil</li>
+              <li>Información y catálogo de servicios</li>
+              <li>Botón directo de WhatsApp</li>
+              <li>Ubicación en Google Maps</li>
+              <li>Formulario de contacto</li>
+            </ul>
+            <a href="https://wa.me/34632334756?text=Hola,%20quiero%20el%20plan%20Starter%20de%2049%E2%82%AC" style="display: block; text-align: center; background: #0B0B12; color: #FAFAF7; padding: 0.75rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Empezar Starter</a>
+          </article>
+
+          <article style="border: 2px solid #F26B2E; border-radius: 1rem; padding: 2rem; background: #FFFFFF; position: relative;">
+            <span style="position: absolute; top: -0.75rem; right: 1.5rem; background: #F26B2E; color: #FFF; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 9999px;">MÁS ELEGIDO</span>
+            <p style="font-size: 0.875rem; font-weight: 700; color: #F26B2E;">PRO</p>
+            <h3 style="font-size: 2rem; font-weight: 800; margin: 0.5rem 0;">199 € <span style="font-size: 0.875rem; font-weight: normal; color: rgba(11,11,18,0.6);">pago único</span></h3>
+            <p style="color: rgba(11,11,18,0.7); font-size: 0.875rem;">Para negocios que buscan una presencia online completa y diferenciada.</p>
+            <ul style="margin: 1.5rem 0; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.7; color: rgba(11,11,18,0.8);">
+              <li>Hasta 5 páginas dedicadas</li>
+              <li>Diseño a medida con identidad de marca</li>
+              <li>SEO básico en Google y metaetiquetas</li>
+              <li>Galería profesional de trabajos</li>
+              <li>Google Maps interactivo</li>
+              <li>Formularios de petición de presupuesto</li>
+            </ul>
+            <a href="https://wa.me/34632334756?text=Hola,%20quiero%20el%20plan%20PRO%20de%20199%E2%82%AC" style="display: block; text-align: center; background: #F26B2E; color: #FAFAF7; padding: 0.75rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700;">Quiero el plan PRO</a>
+          </article>
+
+          <article style="border: 1px solid rgba(11,11,18,0.1); border-radius: 1rem; padding: 2rem; background: #FFFFFF;">
+            <p style="font-size: 0.875rem; font-weight: 700; color: #F26B2E;">BUSINESS</p>
+            <h3 style="font-size: 2rem; font-weight: 800; margin: 0.5rem 0;">499 € <span style="font-size: 0.875rem; font-weight: normal; color: rgba(11,11,18,0.6);">pago único</span></h3>
+            <p style="color: rgba(11,11,18,0.7); font-size: 0.875rem;">Para negocios que quieren convertir su web en una herramienta activa de reservas y ventas.</p>
+            <ul style="margin: 1.5rem 0; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.7; color: rgba(11,11,18,0.8);">
+              <li>Web completa con arquitectura escalable</li>
+              <li>Sistema de reservas de citas online</li>
+              <li>Automatizaciones (avisos por WhatsApp / email)</li>
+              <li>SEO local avanzado y ficha Google Business</li>
+              <li>Analítica de visitas y conversiones</li>
+              <li>Funcionalidades personalizadas</li>
+            </ul>
+            <a href="https://wa.me/34632334756?text=Hola,%20quiero%20el%20plan%20BUSINESS%20de%20499%E2%82%AC" style="display: block; text-align: center; background: #0B0B12; color: #FAFAF7; padding: 0.75rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Quiero BUSINESS</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Servicios y Automatizaciones -->
+      <section id="servicios" style="padding: 3.5rem 1.5rem; max-width: 56rem; margin: 0 auto;">
+        <h2 style="font-size: 1.875rem; font-weight: 800; color: #0B0B12; text-align: center;">Servicios de diseño web y automatización para pymes</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 2rem;">
+          <div style="background: #FFFFFF; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid rgba(11,11,18,0.06);">
+            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">Webs Corporativas y Landings</h3>
+            <p style="font-size: 0.875rem; color: rgba(11,11,18,0.7);">Páginas pensadas exclusivamente para captar clientes locales y presentar tus servicios con claridad.</p>
+          </div>
+          <div style="background: #FFFFFF; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid rgba(11,11,18,0.06);">
+            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">SEO Local y Google Business</h3>
+            <p style="font-size: 0.875rem; color: rgba(11,11,18,0.7);">Aparece en Google y Google Maps cuando busquen tu oficio en tu municipio o barrio.</p>
+          </div>
+          <div style="background: #FFFFFF; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid rgba(11,11,18,0.06);">
+            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">Automatizaciones de Procesos</h3>
+            <p style="font-size: 0.875rem; color: rgba(11,11,18,0.7);">Conexión de formularios y clientes potenciales con WhatsApp, email y bases de datos usando Make o n8n.</p>
+          </div>
+          <div style="background: #FFFFFF; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid rgba(11,11,18,0.06);">
+            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">Mantenimiento Web Continuo</h3>
+            <p style="font-size: 0.875rem; color: rgba(11,11,18,0.7);">Servicio opcional desde 19,90 €/mes para cambios de carta, fotos, textos y seguridad sin preocuparte.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Proyectos Reales -->
+      <section id="proyectos" style="padding: 3.5rem 1.5rem; max-width: 56rem; margin: 0 auto;">
+        <h2 style="font-size: 1.875rem; font-weight: 800; color: #0B0B12; text-align: center;">Proyectos reales desarrollados</h2>
+        <p style="text-align: center; color: rgba(11,11,18,0.7); margin-bottom: 2rem;">No mostramos plantillas vacías. Creamos soluciones digitales reales y funcionales.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+          <div style="background: #FFFFFF; padding: 1.5rem; border-radius: 0.75rem; border: 1px solid rgba(11,11,18,0.06);">
+            <h3 style="font-size: 1.125rem; font-weight: 700;">Portfolio Personal Interactivo</h3>
+            <p style="font-size: 0.875rem; color: rgba(11,11,18,0.7); margin: 0.5rem 0;">Experiencia digital de alta gama con animaciones basadas en física, fluidez a 60 FPS y diseño editorial.</p>
+            <a href="https://portfolio-ayoub-atidi-belbaz.vercel.app/" target="_blank" rel="noopener" style="font-size: 0.875rem; color: #F26B2E; font-weight: 600;">Ver portfolio online &rarr;</a>
+          </div>
+          <div style="background: #FFFFFF; padding: 1.5rem; border-radius: 0.75rem; border: 1px solid rgba(11,11,18,0.06);">
+            <h3 style="font-size: 1.125rem; font-weight: 700;">ZenCut — SaaS para Barberías</h3>
+            <p style="font-size: 0.875rem; color: rgba(11,11,18,0.7); margin: 0.5rem 0;">Gestión de citas por barbero en tiempo real, catálogo interactivo y panel métrico.</p>
+            <a href="https://barber-saas-pi.vercel.app" target="_blank" rel="noopener" style="font-size: 0.875rem; color: #F26B2E; font-weight: 600;">Ver demo online &rarr;</a>
+          </div>
+          <div style="background: #FFFFFF; padding: 1.5rem; border-radius: 0.75rem; border: 1px solid rgba(11,11,18,0.06);">
+            <h3 style="font-size: 1.125rem; font-weight: 700;">Boles de Frutas — E-commerce</h3>
+            <p style="font-size: 0.875rem; color: rgba(11,11,18,0.7); margin: 0.5rem 0;">Tienda gastronómica con selector interactivo por temperatura y checkout ágil.</p>
+            <a href="https://bowl-food-web.vercel.app/" target="_blank" rel="noopener" style="font-size: 0.875rem; color: #F26B2E; font-weight: 600;">Ver demo online &rarr;</a>
+          </div>
+          <div style="background: #FFFFFF; padding: 1.5rem; border-radius: 0.75rem; border: 1px solid rgba(11,11,18,0.06);">
+            <h3 style="font-size: 1.125rem; font-weight: 700;">Imaan by Belbaz — Plataforma Digital</h3>
+            <p style="font-size: 0.875rem; color: rgba(11,11,18,0.7); margin: 0.5rem 0;">Plataforma completa con persistencia en base de datos y diseño editorial exclusivo.</p>
+            <a href="https://ramadan-deen.vercel.app/" target="_blank" rel="noopener" style="font-size: 0.875rem; color: #F26B2E; font-weight: 600;">Ver demo online &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Accordion -->
+      <section id="faq" style="padding: 3.5rem 1.5rem; max-width: 48rem; margin: 0 auto;">
+        <h2 style="font-size: 2rem; font-weight: 800; color: #0B0B12; text-align: center; margin-bottom: 2rem;">Preguntas frecuentes</h2>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <details style="background: #FFFFFF; border: 1px solid rgba(11,11,18,0.1); border-radius: 0.75rem; padding: 1rem 1.25rem;">
+            <summary style="font-weight: 700; cursor: pointer; color: #0B0B12;">¿Qué incluye la web de 49 €?</summary>
+            <p style="margin-top: 0.75rem; font-size: 0.875rem; color: rgba(11,11,18,0.7); line-height: 1.6;">
+              Una página web profesional completa con toda la información clave de tu negocio, catálogo o lista de servicios, fotos, mapa de ubicación, formulario de contacto y botón directo de WhatsApp. 100% adaptada a dispositivos móviles y lista para recibir clientes.
+            </p>
+          </details>
+          <details style="background: #FFFFFF; border: 1px solid rgba(11,11,18,0.1); border-radius: 0.75rem; padding: 1rem 1.25rem;">
+            <summary style="font-weight: 700; cursor: pointer; color: #0B0B12;">¿El dominio y el hosting están incluidos?</summary>
+            <p style="margin-top: 0.75rem; font-size: 0.875rem; color: rgba(11,11,18,0.7); line-height: 1.6;">
+              No. El dominio se registra a tu nombre para que siempre seas el único propietario legal. Te asesoramos con la opción más barata y fiable antes de empezar y podemos configurarlo por ti.
+            </p>
+          </details>
+          <details style="background: #FFFFFF; border: 1px solid rgba(11,11,18,0.1); border-radius: 0.75rem; padding: 1rem 1.25rem;">
+            <summary style="font-weight: 700; cursor: pointer; color: #0B0B12;">¿Cuánto tiempo tardáis en entregar la web?</summary>
+            <p style="margin-top: 0.75rem; font-size: 0.875rem; color: rgba(11,11,18,0.7); line-height: 1.6;">
+              El plazo medio de entrega es de menos de 7 días laborales una vez que nos envías la información básica de tu negocio (servicios, horarios y fotos).
+            </p>
+          </details>
+          <details style="background: #FFFFFF; border: 1px solid rgba(11,11,18,0.1); border-radius: 0.75rem; padding: 1rem 1.25rem;">
+            <summary style="font-weight: 700; cursor: pointer; color: #0B0B12;">¿Puedo pedir cambios sobre la primera versión?</summary>
+            <p style="margin-top: 0.75rem; font-size: 0.875rem; color: rgba(11,11,18,0.7); line-height: 1.6;">
+              Sí. Todos los planes incluyen 1 ronda de revisiones para ajustar detalles, textos o colores según tus preferencias antes del lanzamiento oficial.
+            </p>
+          </details>
+          <details style="background: #FFFFFF; border: 1px solid rgba(11,11,18,0.1); border-radius: 0.75rem; padding: 1rem 1.25rem;">
+            <summary style="font-weight: 700; cursor: pointer; color: #0B0B12;">¿El mantenimiento mensual es obligatorio?</summary>
+            <p style="margin-top: 0.75rem; font-size: 0.875rem; color: rgba(11,11,18,0.7); line-height: 1.6;">
+              No, es totalmente opcional. Si lo prefieres, te entregamos la web y la gestionas tú. Si prefieres despreocuparte, disponemos de mantenimiento desde 19,90 €/mes sin permanencia.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- CTA de Cierre y Contacto Directo -->
+      <section style="background: #F26B2E; color: #FAFAF7; padding: 4.5rem 1.5rem; text-align: center;">
+        <h2 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 1rem; color: #FAFAF7;">¿Hacemos que tu negocio se vea como merece?</h2>
+        <p style="font-size: 1.125rem; max-width: 36rem; margin: 0 auto 2rem; color: rgba(250,250,247,0.9);">
+          Cuéntanos qué necesitas por WhatsApp y te damos una propuesta concreta el mismo día.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="https://wa.me/34632334756?text=Hola,%20quiero%20informaci%C3%B3n%20para%20crear%20mi%20web" style="display: inline-block; background: #0B0B12; color: #FAFAF7; padding: 1rem 1.75rem; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 1rem;">
+            Escríbenos (+34 632 33 47 56)
+          </a>
+          <a href="https://wa.me/34641279131?text=Hola,%20quiero%20informaci%C3%B3n%20para%20crear%20mi%20web" style="display: inline-block; background: #0B0B12; color: #FAFAF7; padding: 1rem 1.75rem; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 1rem;">
+            Escríbenos (+34 641 27 91 31)
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer style="background: #0B0B12; color: #FAFAF7; padding: 3rem 1.5rem; font-size: 0.875rem;">
+      <div style="max-width: 64rem; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
+        <div>
+          <p style="font-size: 1.25rem; font-weight: 800;">WEB<span style="color: #F26B2E;">PULSAR</span></p>
+          <p style="color: rgba(250,250,247,0.6); margin-top: 0.5rem;">Webs profesionales para negocios locales y pymes.</p>
+        </div>
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+          <div>
+            <p style="font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.75rem; color: rgba(250,250,247,0.5);">Legal</p>
+            <p><a href="/pages/aviso-legal" style="color: rgba(250,250,247,0.7); text-decoration: none;">Aviso legal</a></p>
+            <p><a href="/pages/terminos" style="color: rgba(250,250,247,0.7); text-decoration: none;">Términos</a></p>
+            <p><a href="/pages/politica-privacidad" style="color: rgba(250,250,247,0.7); text-decoration: none;">Privacidad</a></p>
+          </div>
+          <div>
+            <p style="font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.75rem; color: rgba(250,250,247,0.5);">Contacto</p>
+            <p><a href="mailto:contacto@webpulsar.es" style="color: rgba(250,250,247,0.7); text-decoration: none;">contacto@webpulsar.es</a></p>
+            <p><a href="https://wa.me/34632334756" style="color: rgba(250,250,247,0.7); text-decoration: none;">WhatsApp: +34 632 33 47 56</a></p>
+            <p><a href="https://wa.me/34641279131" style="color: rgba(250,250,247,0.7); text-decoration: none;">WhatsApp: +34 641 27 91 31</a></p>
+          </div>
+          <div>
+            <p style="font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.75rem; color: rgba(250,250,247,0.5);">Área Local</p>
+            <p style="color: rgba(250,250,247,0.7);">Molina de Segura · Murcia</p>
+            <p style="color: rgba(250,250,247,0.5); font-size: 0.75rem; margin-top: 0.25rem;">Servicio en toda España</p>
+          </div>
+        </div>
+      </div>
+      <div style="max-width: 64rem; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(250,250,247,0.1); color: rgba(250,250,247,0.4); font-size: 0.75rem; display: flex; justify-content: space-between;">
+        <span>© {{ 'now' | date: '%Y' }} WebPulsar. Todos los derechos reservados.</span>
+        <span>España · Diseño Web y Automatización</span>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>

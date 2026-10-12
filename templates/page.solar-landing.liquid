@@ -2,22 +2,46 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Webs profesionales para negocios desde 49 € | WebPulsar</title>
-<meta name="description" content="Creamos webs profesionales para negocios. Diseño moderno, experiencia móvil y un proceso sencillo. Empieza tu web con WebPulsar desde 49 €.">
-<meta name="theme-color" content="#E8E4DD">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-{{ 'solar-landing.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'vendor-react.js' | asset_url }}"></script>
-<script src="{{ 'vendor-react-dom.js' | asset_url }}"></script>
-<script src="{{ 'vendor-gsap.js' | asset_url }}"></script>
-<script src="{{ 'vendor-scrolltrigger.js' | asset_url }}"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Webs profesionales para negocios desde 49 € | WebPulsar</title>
+  <meta name="description" content="Creamos webs profesionales para negocios locales desde 49 €. Diseño moderno, experiencia móvil y un proceso sencillo. Empieza tu web con WebPulsar.">
+  <link rel="canonical" href="{{ canonical_url | default: shop.url }}">
+  <meta name="theme-color" content="#E8E4DD">
+  <meta name="robots" content="index, follow">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 48, height: 48 }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
+  {%- else -%}
+    <link rel="icon" type="image/png" href="{{ 'apple-touch-icon.png' | asset_url }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
+  {%- endif -%}
+
+  <meta property="og:site_name" content="WebPulsar">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ canonical_url | default: shop.url }}">
+  <meta property="og:title" content="Webs profesionales para negocios desde 49 € | WebPulsar">
+  <meta property="og:description" content="Creamos webs profesionales para negocios locales desde 49 €. Diseño moderno, experiencia móvil y entrega en menos de 7 días.">
+  <meta property="og:locale" content="es_ES">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Webs profesionales para negocios desde 49 € | WebPulsar">
+  <meta name="twitter:description" content="Creamos webs profesionales para negocios locales desde 49 €. Diseño moderno y adaptado a móvil.">
+
+  {% render 'structured-data' %}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  {{ 'solar-landing.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'vendor-react.js' | asset_url }}" defer></script>
+  <script src="{{ 'vendor-react-dom.js' | asset_url }}" defer></script>
+  <script src="{{ 'vendor-gsap.js' | asset_url }}" defer></script>
+  <script src="{{ 'vendor-scrolltrigger.js' | asset_url }}" defer></script>
+  <script src="{{ 'solar-landing.js' | asset_url }}" defer></script>
 </head>
 <body>
-<div id="root"></div>
-<script src="{{ 'solar-landing.js' | asset_url }}"></script>
+  <div id="root"></div>
 </body>
 </html>
