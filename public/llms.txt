@@ -1,0 +1,35 @@
+# WebPulsar — Agencia de Diseño Web, Automatizaciones y SEO en Murcia y Molina de Segura
+
+> WebPulsar es una agencia tecnológica especializada en la creación de páginas web profesionales, desarrollo de software a medida (SaaS), automatizaciones de procesos con WhatsApp y posicionamiento SEO local para pymes, comercios y autónomos en Molina de Segura, la Región de Murcia y toda España.
+
+## Información de la Empresa
+- **Nombre:** WebPulsar
+- **Sitio Web Oficial:** https://webpulsar.es
+- **Sede y Cobertura Local:** Molina de Segura (30500), Murcia Capital (30001) y comarca (Alcantarilla, Las Torres de Cotillas, Cieza, Archena, Cartagena, Lorca).
+- **Cobertura Nacional:** España (proyectos online y soporte remoto).
+- **Teléfonos / WhatsApp:** +34 632 33 47 56 / +34 641 27 91 31
+- **Email:** contacto@webpulsar.es
+- **Horario:** Lunes a Viernes de 09:00 a 20:00
+
+## Servicios Principales
+1. **Diseño y Creación de Páginas Web:**
+   - Webs ultrarrápidas bajo enfoque 100% Mobile-First (sin plantillas infladas de WordPress).
+   - Entrega media en menos de 7 días laborales.
+   - Precios en pago único sin permanencia obligatoria:
+     - Plan Starter: 49 € (Web presencial de 1 página con WhatsApp, mapa y formulario).
+     - Plan Pro: 199 € (Hasta 5 páginas corporativas, diseño a medida y SEO inicial).
+     - Plan Business: 499 € (Web completa con reservas online y automatizaciones).
+     - Proyectos a Medida: Desde 799 € (SaaS, plataformas de gestión y e-commerce).
+2. **Automatizaciones de Procesos para Pymes:**
+   - Notificaciones y avisos automáticos instantáneos por WhatsApp.
+   - Sistemas de reserva de citas y calendario sin intervención manual.
+   - Integración de formularios inteligentes con CRM, Google Sheets y correo electrónico mediante n8n y Make.
+3. **Posicionamiento SEO Local en Google (Top 1):**
+   - Optimización de arquitectura On-Page y datos estructurados Schema.org JSON-LD.
+   - Optimización y verificación de fichas de Google Business Profile para dominar Google Maps.
+   - Estrategia de palabras clave transaccionales y locales en Murcia y Molina de Segura.
+
+## Casos de Éxito y Proyectos Reales
+- **ZenCut (SaaS para Barberías):** Plataforma de citas y reservas en tiempo real con panel métrico (https://barber-saas-pi.vercel.app).
+- **Boles de Frutas (E-commerce Gastronómico):** Tienda online interactiva con pedido ágil (https://bowl-food-web.vercel.app).
+- **Portfolio Digital:** https://portfolio-ayoub-atidi-belbaz.vercel.app
