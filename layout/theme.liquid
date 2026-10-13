@@ -50,6 +50,38 @@
     {% render 'meta-tags', seo_title: seo_title, seo_description: seo_description %}
     {% render 'structured-data' %}
 
+
+    
+
+    {% if request.page_type == 'index' %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "WebPulsar",
+      "image": "https://webpulsar.es/assets/solar-landing.jpg",
+      "url": "https://webpulsar.es",
+      "telephone": "+34641279131
+      "priceRange": "49€ - 499€",
+      "description": "Agencia de diseño web, desarrollo SaaS y automatización de procesos en Molina de Segura y Murcia.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Molina de Segura",
+        "addressRegion": "Región de Murcia",
+        "postalCode": "30500",
+        "addressCountry": "ES"
+      },
+      "areaServed": ["Molina de Segura", "Murcia"],
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "EUR",
+        "lowPrice": "49",
+        "highPrice": "499"
+      }
+    }
+    </script>
+    {% endif %}
+
     {%- comment -%}
       Tipografía de marca: Space Grotesk (display) + Inter (body) via Google
       Fonts, cargadas desde tokens.css. Se precarga la conexión para que el
