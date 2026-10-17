@@ -159,7 +159,7 @@
           "type": "tier",
           "settings": {
             "name": "Mantenimiento básico",
-            "price": "19,90",
+            "price": "49",
             "currency": "€",
             "period": "/mes",
             "tagline": "Para webs de una página que solo necesitan estar al día.",
@@ -171,7 +171,7 @@
           "type": "tier",
           "settings": {
             "name": "Mantenimiento PRO",
-            "price": "29,90",
+            "price": "79",
             "currency": "€",
             "period": "/mes",
             "tagline": "Para webs de varias páginas con contenido que cambia a menudo.",
@@ -183,7 +183,7 @@
           "type": "tier",
           "settings": {
             "name": "Mantenimiento BUSINESS",
-            "price": "49,90",
+            "price": "129",
             "currency": "€",
             "period": "/mes",
             "tagline": "Para webs con reservas, formularios o integraciones activas.",
@@ -346,7 +346,7 @@
         "q3": { "type": "faq", "settings": { "question": "¿El hosting está incluido?", "answer": "<p>Tampoco. Es un servicio recurrente con coste propio y preferimos no esconderlo dentro del precio. Te recomendamos una opción concreta según lo que necesite tu web.</p>" } },
         "q4": { "type": "faq", "settings": { "question": "¿Cuánto tardáis?", "answer": "<p>La web de 49 € suele estar lista en pocos días desde que recibimos tus textos y tus fotos. Antes de empezar te damos una fecha concreta y la cumplimos.</p>" } },
         "q5": { "type": "faq", "settings": { "question": "¿Puedo pedir cambios?", "answer": "<p>Sí. Cada plan incluye una ronda de cambios sobre la primera versión. A partir de ahí, los cambios puntuales se presupuestan aparte o entran en el mantenimiento si lo contratas.</p>" } },
-        "q6": { "type": "faq", "settings": { "question": "¿Puedo contratar mantenimiento?", "answer": "<p>Sí, desde 19,90 € al mes y siempre opcional. Cubre actualizaciones, pequeños cambios de contenido y soporte. Se factura mes a mes y puedes darte de baja cuando quieras.</p>" } },
+        "q6": { "type": "faq", "settings": { "question": "¿Puedo contratar mantenimiento?", "answer": "<p>Sí, desde 49 € al mes y siempre opcional. Cubre actualizaciones, pequeños cambios de contenido y soporte. Se factura mes a mes y puedes darte de baja cuando quieras.</p>" } },
         "q7": { "type": "faq", "settings": { "question": "¿Podéis hacer una tienda online?", "answer": "<p>Sí. No entra en los planes de esta página porque el precio depende del catálogo, los pagos y los envíos. Cuéntanos qué vendes y te pasamos un presupuesto cerrado.</p>" } },
         "q8": { "type": "faq", "settings": { "question": "¿Podéis hacer reservas?", "answer": "<p>Sí. El sistema de reservas y citas entra en el plan BUSINESS y se puede añadir a los demás planes. Lo montamos según cómo trabajes: por horas, por servicios o por profesional.</p>" } },
         "q9": { "type": "faq", "settings": { "question": "¿Trabajáis con cualquier tipo de negocio?", "answer": "<p>Trabajamos sobre todo con negocios locales: peluquerías, estética, uñas, fisioterapia, talleres, restaurantes, electricistas, fontaneros, inmobiliarias, entrenadores y clínicas. Si el tuyo no está en la lista, pregúntanos.</p>" } }
